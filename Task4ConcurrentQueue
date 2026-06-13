@@ -1,0 +1,32 @@
+
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+public class Task4ConcurrentQueue {
+
+    public static void main(String[] args) {
+
+        System.out.println("          TASK 4: CONCURRENT QUEUE                ");
+
+
+        // 1. Using ConcurrentLinkedQueue
+        ConcurrentLinkedQueue<String> registrationQueue = new ConcurrentLinkedQueue<>();
+
+        // 2. Add registration requests into the queue
+        registrationQueue.offer("Request_01: Student A adds STIW3014");
+        registrationQueue.offer("Request_02: Student B drops STIA1123");
+        registrationQueue.offer("Request_03: Student C adds STID3024");
+        registrationQueue.offer("Request_04: Student D adds STIK2014");
+
+        // 3. Display the first request waiting to be processed
+        System.out.println("First request waiting (peek()): " + registrationQueue.peek());
+
+        // 4. Process and remove requests one by one until empty
+        System.out.println("\n--- Processing Queue Items ---");
+        while (!registrationQueue.isEmpty()) {
+            String processedRequest = registrationQueue.poll();
+            System.out.println("Processing & Removing -> " + processedRequest);
+        }
+
+        System.out.println("\nIs the queue empty now? " + registrationQueue.isEmpty());
+    }
+}
