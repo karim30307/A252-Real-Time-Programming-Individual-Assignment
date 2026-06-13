@@ -1,0 +1,36 @@
+package Week11;
+
+import java.util.concurrent.ConcurrentHashMap;
+public class Task2ConcurrentSet {
+
+    public static void main(String[] args) {
+
+        System.out.println("           TASK 2: CONCURRENT SET                 ");
+
+
+        // 1. Using a Concurrent Set (via ConcurrentHashMap)
+        ConcurrentHashMap.KeySetView<String, Boolean> courseCodesSet = ConcurrentHashMap.newKeySet();
+
+        // 2. Add course codes into the Set
+        courseCodesSet.add("STIW3014");
+        courseCodesSet.add("STIA1123");
+        courseCodesSet.add("STID3024");
+        courseCodesSet.add("STIK2014");
+
+        // 3. Attempt to add duplicate course codes
+        System.out.println("Attempting to add duplicate 'STIW3014'...");
+        boolean isAddedAgain = courseCodesSet.add("STIW3014");
+        System.out.println("Was duplicate 'STIW3014' successfully added? " + isAddedAgain);
+
+        // 4. Display all unique course codes
+        System.out.println("\n--- Unique Course Codes ---");
+        System.out.println(courseCodesSet);
+
+        // 5. Check whether a course code exists
+        System.out.println("Does 'STID3024' exist? " + courseCodesSet.contains("STID3024"));
+
+        // 6. Remove one course code
+        courseCodesSet.remove("STIK2014");
+        System.out.println("After removing 'STIK2014', current codes: " + courseCodesSet);
+    }
+}
